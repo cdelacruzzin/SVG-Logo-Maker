@@ -42,7 +42,6 @@ describe('promptTextColour', () => {
         await expect(colClass.promptTextColour()).rejects.toThrow('Not a valid colour');
     });
 
-
     it('should pass if keyword or hexadecimal is valid', async () => {
         const colClass = new Cli();
         const input = 'red';
@@ -52,4 +51,26 @@ describe('promptTextColour', () => {
     
         await expect(colClass.promptTextColour()).resolves.toEqual(true);
     });
+});
+
+
+describe('promptShapeColour', () => {
+    it('should throw an error if colour is not a valid keyword or hexadecimal', async () => {
+        const input = 'asdsa';
+        const colClass = new Cli();
+
+        inquirer.prompt=jest.fn();
+        inquirer.prompt.mockResolvedValue({shapeColour: input});
+        await expect(colClass.promptShapeColour()).rejects.toThrow('Not a valid colour');
+    });
+
+    it('should pass if colour is a valid keyword or hexadecimal', async () => {
+        const input = 'blue';
+        const colClass = new Cli();
+
+        inquirer.prompt=jest.fn();
+        inquirer.prompt.mockResolvedValue({shapeColour: input});
+        await expect(colClass.promptShapeColour()).resolves.toEqual(true);
+    });
+
 });

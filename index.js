@@ -1,3 +1,3 @@
-var validateColor = require("validate-color").default;
-``
-console.log(validateColor('red'));
+const CLI = require('./lib/input.js')
+const cli = new CLI();
+cli.promptTitle();
