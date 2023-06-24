@@ -33,7 +33,23 @@ describe('prompt title', () => {
 });
 
 describe('promptTextColour', () => {
-    it('should throw an error if keyword or hexadecimal is not valid', () => {
-        
+    it('should throw an error if keyword or hexadecimal is not valid', async () => {
+        const colClass = new Cli();
+        const input = 'ewsasd';
+
+        inquirer.prompt = jest.fn();
+        inquirer.prompt.mockResolvedValue({txtColour: input});
+        await expect(colClass.promptTextColour()).rejects.toThrow('Not a valid colour');
+    });
+
+
+    it('should pass if keyword or hexadecimal is valid', async () => {
+        const colClass = new Cli();
+        const input = 'red';
+    
+        inquirer.prompt = jest.fn();
+        inquirer.prompt.mockResolvedValue({txtColour: input});
+    
+        await expect(colClass.promptTextColour()).resolves.toEqual(true);
     });
 });
