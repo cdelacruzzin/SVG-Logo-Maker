@@ -30,5 +30,10 @@ describe('prompt title', () => {
         inquirer.prompt.mockResolvedValue({ title: input });
         await expect(title.promptTitle()).rejects.toThrow('Title is undefined');
     });
+});
 
+describe('promptTextColour', () => {
+    it('should throw an error if keyword or hexadecimal is not valid', () => {
+        
+    });
 });
