@@ -8,7 +8,7 @@ describe('prompt title', () => {
     it('should throw an error if title is more than 3 chars', async () => {
 
         const title = new Cli();
-        const input = 'red';
+        const input = 'reds';
 
         //This allows you to control the behavior of the prompt and provide mock responses.
         inquirer.prompt = jest.fn();
@@ -17,4 +17,18 @@ describe('prompt title', () => {
         inquirer.prompt.mockResolvedValue({ title: input });
         await expect(title.promptTitle()).rejects.toThrow('Title is more than 3 characters');
     });
+
+    it('should throw an error if title is more than 3 chars', async () => {
+
+        const title = new Cli();
+        const input = '';
+
+        //This allows you to control the behavior of the prompt and provide mock responses.
+        inquirer.prompt = jest.fn();
+
+        //mockResolvedValue() is used for asynchronous prompts
+        inquirer.prompt.mockResolvedValue({ title: input });
+        await expect(title.promptTitle()).rejects.toThrow('Title is undefined');
+    });
+
 });
