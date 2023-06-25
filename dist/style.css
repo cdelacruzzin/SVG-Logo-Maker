@@ -5,15 +5,15 @@ svg{
 }
 
 svg circle {
-    stroke: black;
     stroke-width: 3;
-    fill: red;
-    text-anchor: middle;
-    
-    
+    fill: red; 
 }
 svg text {
-    fill: blue;
     font-size: 3rem;
     text-anchor: middle;  /* Horizontal center alignment */
+}
+
+svg polygon{
+    stroke: black;
+    stroke-width: 3;
 }
